@@ -1,5 +1,6 @@
 # SteamGameFixesForLinux
 Just some fixes for problems I came across while trying to run Steam games on Linux
+These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon), but depending on your distro and general setup your mileage may vary. 
 
 ## Skyrim Special Edition (with AE DLC)
 The Problems:
@@ -16,6 +17,7 @@ The Problems:
     * I'm on Linux Mint 21.2 cinnamon right now and cinnamon has this annoying quirk where it doesn' disable compositing for fullscreen apps by default, so the way to do exactly that was to go to ```System Settings -> General -> Dieable compositing on fullscreen applications```.
 * I want to run Skyrim with mods, but **skse64_loader.exe can't launch Skyrim**
     * You probably installed MO2 to manage your mods and if that's the case, **uninstall** it along with SKSE64 and then **reinstall MO2 _without_ manually installing SKSE64**. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one. Now, I have no idea whether or not that's actually what fixed it, but I have no recollection of doing anything special to SKSE or MO2.
+
 ## Portal 2
 Problem:
 * The game would start with a wrong aspect ratio and resolution
