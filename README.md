@@ -19,8 +19,16 @@ The Problems:
     * You probably installed MO2 to manage your mods and if that's the case, **uninstall** it along with SKSE64 and then **reinstall MO2 _without_ manually installing SKSE64**. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one. Now, I have no idea whether or not that's actually what fixed it, but I have no recollection of doing anything special to SKSE or MO2.
 
 ## Portal 2
-Problem:
+The Problems:
 * The game would start with a wrong aspect ratio and resolution
     * Add the Launch option ```-vulkan```
 * The game stutters
     * Try [disabling compositing on fullscreen applications](https://linux-gaming.kwindu.eu/index.php?title=Compositor_(X11)#Cinnamon), if you are on Linux Mint Cinnamon.
+
+## Satisfactory
+The Problem:
+* It just didn't launch. The fix for that was to add the following launch options: ```LD_BIND_NOW=1 VKD3D_CONFIG=dxr PROTON_ENABLE_NVAPI=1 DXVK_ENABLE_NVAPI=1 %command% -NO_EOS_OVERLAY ‑USEALLAVAILABLECORES -nosplash -nothreadtimeout```
+
+## Icarus
+The Problem:
+* Didn't launch. Added Launch options: ```PROTON_ENABLE_NVAPI=1 %command%```
