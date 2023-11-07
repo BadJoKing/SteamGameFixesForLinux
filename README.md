@@ -1,6 +1,6 @@
 # SteamGameFixesForLinux
 Just some fixes for problems I came across while trying to run Steam games on Linux
-These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon), but depending on your distro and general setup your mileage may vary. 
+These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon, at the moment EndeavourOS), but depending on your distro and general setup your mileage may vary. 
 
 ## Skyrim Special Edition (with AE DLC)
 The Problems:
