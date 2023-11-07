@@ -76,8 +76,6 @@
 │   ├── 4233908-4.manifest
 │   ├── 4233911-4.manifest
 │   └── 4233914-3.manifest
-├── d3d11.dll
-├── d3dcompiler_46e.dll
 ├── d3dx9_42.dll
 ├── d3dx9_42.log
 ├── Data
@@ -232,132 +230,6 @@
 │   ├── Dawnguard.esm
 │   ├── Dragonborn.esm
 │   ├── HearthFires.esm
-│   ├── Scripts
-│   │   ├── activemagiceffect.pex
-│   │   ├── actorbase.pex
-│   │   ├── actor.pex
-│   │   ├── actorvalueinfo.pex
-│   │   ├── alias.pex
-│   │   ├── ammo.pex
-│   │   ├── apparatus.pex
-│   │   ├── armoraddon.pex
-│   │   ├── armor.pex
-│   │   ├── art.pex
-│   │   ├── book.pex
-│   │   ├── camera.pex
-│   │   ├── cell.pex
-│   │   ├── colorcomponent.pex
-│   │   ├── colorform.pex
-│   │   ├── combatstyle.pex
-│   │   ├── constructibleobject.pex
-│   │   ├── defaultobjectmanager.pex
-│   │   ├── enchantment.pex
-│   │   ├── equipslot.pex
-│   │   ├── faction.pex
-│   │   ├── flora.pex
-│   │   ├── formlist.pex
-│   │   ├── form.pex
-│   │   ├── formtype.pex
-│   │   ├── gamedata.pex
-│   │   ├── game.pex
-│   │   ├── headpart.pex
-│   │   ├── ingredient.pex
-│   │   ├── input.pex
-│   │   ├── keyword.pex
-│   │   ├── leveledactor.pex
-│   │   ├── leveleditem.pex
-│   │   ├── leveledspell.pex
-│   │   ├── location.pex
-│   │   ├── magiceffect.pex
-│   │   ├── math.pex
-│   │   ├── modevent.pex
-│   │   ├── netimmerse.pex
-│   │   ├── objectreference.pex
-│   │   ├── outfit.pex
-│   │   ├── perk.pex
-│   │   ├── potion.pex
-│   │   ├── quest.pex
-│   │   ├── race.pex
-│   │   ├── scroll.pex
-│   │   ├── shout.pex
-│   │   ├── skse.pex
-│   │   ├── soulgem.pex
-│   │   ├── sounddescriptor.pex
-│   │   ├── sound.pex
-│   │   ├── Source
-│   │   │   ├── ActiveMagicEffect.psc
-│   │   │   ├── ActorBase.psc
-│   │   │   ├── Actor.psc
-│   │   │   ├── ActorValueInfo.psc
-│   │   │   ├── Alias.psc
-│   │   │   ├── Ammo.psc
-│   │   │   ├── Apparatus.psc
-│   │   │   ├── ArmorAddon.psc
-│   │   │   ├── Armor.psc
-│   │   │   ├── Art.psc
-│   │   │   ├── Book.psc
-│   │   │   ├── Camera.psc
-│   │   │   ├── Cell.psc
-│   │   │   ├── ColorComponent.psc
-│   │   │   ├── ColorForm.psc
-│   │   │   ├── CombatStyle.psc
-│   │   │   ├── ConstructibleObject.psc
-│   │   │   ├── DefaultObjectManager.psc
-│   │   │   ├── Enchantment.psc
-│   │   │   ├── EquipSlot.psc
-│   │   │   ├── Faction.psc
-│   │   │   ├── Flora.psc
-│   │   │   ├── FormList.psc
-│   │   │   ├── Form.psc
-│   │   │   ├── FormType.psc
-│   │   │   ├── GameData.psc
-│   │   │   ├── Game.psc
-│   │   │   ├── HeadPart.psc
-│   │   │   ├── Ingredient.psc
-│   │   │   ├── Input.psc
-│   │   │   ├── Keyword.psc
-│   │   │   ├── LeveledActor.psc
-│   │   │   ├── LeveledItem.psc
-│   │   │   ├── LeveledSpell.psc
-│   │   │   ├── Location.psc
-│   │   │   ├── MagicEffect.psc
-│   │   │   ├── Math.psc
-│   │   │   ├── ModEvent.psc
-│   │   │   ├── NetImmerse.psc
-│   │   │   ├── ObjectReference.psc
-│   │   │   ├── Outfit.psc
-│   │   │   ├── Perk.psc
-│   │   │   ├── Potion.psc
-│   │   │   ├── Quest.psc
-│   │   │   ├── Race.psc
-│   │   │   ├── Scroll.psc
-│   │   │   ├── Shout.psc
-│   │   │   ├── SKSE.psc
-│   │   │   ├── SoulGem.psc
-│   │   │   ├── SoundDescriptor.psc
-│   │   │   ├── Sound.psc
-│   │   │   ├── SpawnerTask.psc
-│   │   │   ├── Spell.psc
-│   │   │   ├── StringUtil.psc
-│   │   │   ├── TextureSet.psc
-│   │   │   ├── TreeObject.psc
-│   │   │   ├── UICallback.psc
-│   │   │   ├── UI.psc
-│   │   │   ├── Utility.psc
-│   │   │   ├── Weapon.psc
-│   │   │   ├── Weather.psc
-│   │   │   └── WornObject.psc
-│   │   ├── spawnertask.pex
-│   │   ├── spell.pex
-│   │   ├── stringutil.pex
-│   │   ├── textureset.pex
-│   │   ├── treeobject.pex
-│   │   ├── uicallback.pex
-│   │   ├── ui.pex
-│   │   ├── utility.pex
-│   │   ├── weapon.pex
-│   │   ├── weather.pex
-│   │   └── wornobject.pex
 │   ├── ShaderCache
 │   ├── Skyrim - Animations.bsa
 │   ├── Skyrim.esm
@@ -377,63 +249,13 @@
 │   ├── Skyrim - Textures7.bsa
 │   ├── Skyrim - Textures8.bsa
 │   ├── Skyrim - Voices_en0.bsa
-│   ├── Textures
-│   │   └── cubemaps
-│   │       └── dynamic1pxcubemap_black.dds
 │   ├── Update.esm
 │   └── Video
-│       ├── BGS_Logo.bik
-│       ├── CTR_TimeVid_Five.bik
-│       ├── CTR_TimeVid_Four.bik
-│       ├── CTR_TimeVid_One.bik
-│       ├── CTR_TimeVid_Three.bik
-│       ├── CTR_TimeVid_Two.bik
-│       ├── WT_Title.bik
-│       └── YoungScrolls.bik
-├── enbadaptation.fx
-├── enbbloom.fx
-├── enbdepthoffield.fx
-├── enbeffect.fx
-├── enbeffectpostpass.fx
-├── enbeffectprepass.fx
-├── enblens.fx
-├── enblocal.ini
-├── enbpalette.bmp
-├── enbraindrops.dds
-├── enbseries
-│   ├── enbadaptation.fx.ini
-│   ├── enbbloom.fx.ini
-│   ├── enbdepthoffield.fx.ini
-│   ├── enbeffect.fx.ini
-│   ├── enbeffectpostpass.fx.ini
-│   ├── enbeffectprepass.fx.ini
-│   ├── enblens.fx.ini
-│   ├── enbsunsprite.fx.ini
-│   ├── enbunderwater.fx.ini
-│   ├── _locationweather.ini
-│   └── _weatherlist.ini
-├── enbseries.ini
-├── enbsunsprite.bmp
-├── enbsunsprite.fx
-├── enbunderwater.fx
-├── enbunderwaternoise.bmp
+│       └── BGS_Logo.bik
 ├── High.ini
 ├── installscript.vdf
-├── license_en.txt
 ├── Low.ini
 ├── Medium.ini
-├── modorganizer2
-│   └── instance_path.txt
-├── ModOrganizer_d3d11.log
-├── ModOrganizer_d3d9.log
-├── ModOrganizer_dxgi.log
-├── nxmhandler_d3d11.log
-├── nxmhandler_d3d9.log
-├── nxmhandler_dxgi.log
-├── readme_en.txt
-├── readme.txt
-├── skse64_1_6_640.dll
-├── skse64_loader.exe
 ├── Skyrim
 │   └── SkyrimPrefs.ini
 ├── Skyrim.ccc
