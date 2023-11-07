@@ -23,7 +23,7 @@ The Problems:
 * Skyrim starts, but gets **stuck at a black screen**:
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * If you are big into modding:
-       * You probably installed some mods via Vortex. If you add the launch option ```PROTON_LOG=1``` and look at the end of the steam-489830.log file, if it says that it tries to load certain mods(e.g. EngineFixes or MCM as was the case with my install), you'll have to remove all Vortex created Files from the Data directory. A Vanilla Skyrim directory looks like in the file FileTree-SSE-AE-detail.md which can be found in this repo. You can use that as a reference and delete all directories/files that are "Not on the list" (get it? cuz Hadvar says that in the opening cutscene...)
+       * You probably installed some mods via Vortex. If you add the launch option ```PROTON_LOG=1``` and look at the end of the steam-489830.log file, if it says that it tries to load certain mods(e.g. EngineFixes or MCM as was the case with my install), you'll have to remove all Vortex created Files from the Data directory. A Vanilla Skyrim directory looks like in the file FileTree-SSE-AE-detail.txt which can be found in this repo. You can use that as a reference and delete all directories/files that are "Not on the list" (get it? cuz Hadvar says that in the opening cutscene...)
 * Skyrim crashes when it tries rendering the world after clicking "New Game" (enbseries installed):
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * You might have some enbseries files missing or incorrectly installed. Try un-/reinstalling enbseries and try it again.
