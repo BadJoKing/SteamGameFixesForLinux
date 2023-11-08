@@ -14,7 +14,7 @@ The Problems:
     * Now, when you do your own research, maybe on [Skyrim SE's protondb](https://www.protondb.com/app/489830), you might find that some people added a ```PROTON_USE_WINED3D=1 %command%``` option to their game. I didn't, because for me it would cause the performance to be abysmal. We're talking 1 FPS **at most** throughout the opening scene, average was more like 5 SPF. Your mileage may vary though, so you might wanna try it out, just to see if it works for you or not.
     * You might also want to try **deleting the wineprefix** for Skyrim SE (located somewhere around /path/to/steamapps/compatdata/489830/pfx) and relaunching the game.
 * Skyrim runs now, but there's some very annoying **hitching** happening
-    * I'm on Linux Mint 21.2 cinnamon right now and cinnamon has this annoying quirk where it doesn' disable compositing for fullscreen apps by default, so the way to do exactly that was to go to ```System Settings -> General -> Disable compositing on fullscreen applications```.
+    * I'm on Linux Mint 21.2 cinnamon right now and cinnamon has this annoying quirk where it doesn't disable compositing for fullscreen apps by default, so the way to do exactly that was to go to ```System Settings -> General -> Disable compositing on fullscreen applications```.
 * I want to run Skyrim with mods, but **skse64_loader.exe can't launch Skyrim**:
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * You probably installed MO2 to manage your mods and if that's the case, **uninstall** it along with SKSE64 and then **reinstall MO2 _without_ manually installing SKSE64**. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one. 
@@ -23,7 +23,7 @@ The Problems:
 * Skyrim starts, but gets **stuck at a black screen**:
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * If you are big into modding:
-       * You probably installed some mods via Vortex. If you add the launch option ```PROTON_LOG=1``` and look at the end of the steam-489830.log file, if it says that it tries to load certain mods(e.g. EngineFixes or MCM as was the case with my install), you'll have to remove all Vortex created Files from the Data directory. A Vanilla Skyrim directory looks like in the file FileTree-SSE-AE-detail.txt which can be found in this repo. You can use that as a reference and delete all directories/files that are "Not on the list" (get it? cuz Hadvar says that in the opening cutscene...)
+       * You probably installed some mods via Vortex. If you add the launch option ```PROTON_LOG=1``` and look at the end of the steam-489830.log file(should be in your user home folder), if it says that it tries to load certain mods(e.g. EngineFixes or MCM as was the case with my install), you'll have to remove all Vortex created Files from the Data directory. A Vanilla Skyrim directory looks like in the file FileTree-SSE-AE-detail.txt which can be found in this repo. You can use that as a reference and delete all directories/files that are "Not on the list" (get it? cuz Hadvar says that in the opening cutscene...). You also probably want to switch to [MO2](https://github.com/rockerbacon/modorganizer2-linux-installer), as it doesn't clutter the source directory with all the mods, but instead tells Skyrim to think that a seperate directory is definitely, really for sure in the source folder and that it should look there for mods (or so I remember. I read about that once like a year ago and I'm too lazy to factcheck that. Fact is that the source directory of Skyrim WILL be way cleaner under MO2).  
 * Skyrim crashes when it tries rendering the world after clicking "New Game" (enbseries installed):
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * You might have some enbseries files missing or incorrectly installed. Try un-/reinstalling enbseries and try it again.
@@ -35,7 +35,7 @@ The Problems:
 * The game would start with a wrong aspect ratio and resolution
     * Add the Launch option ```-vulkan```
 * The game stutters
-    * Try [disabling compositing on fullscreen applications](https://linux-gaming.kwindu.eu/index.php?title=Compositor_(X11)#Cinnamon), if you are on Linux Mint Cinnamon.
+    * Try [disabling compositing on fullscreen applications](https://linux-gaming.kwindu.eu/index.php?title=Compositor_(X11)#Cinnamon), if you are using Cinnamon as a desktop environment.
 
 ## Satisfactory
 The Problem:
