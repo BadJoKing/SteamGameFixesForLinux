@@ -27,8 +27,8 @@ The Problems:
 * Skyrim crashes when it tries rendering the world after clicking "New Game" (enbseries installed):
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * You might have some enbseries files missing or incorrectly installed. Try un-/reinstalling enbseries and try it again.
-
-
+* **Wine C++** Runtime "assertion failed" error pop-up on (GE-)proton 8 and newer:
+   * Yeah, that's a problem with enbseries. If you want to keep enbseries and don't really care about the proton version then just **change it to something like GEProton-7-55** or earlier. If you want the newer proton version, I've got bad news for you as I haven't found a way yet to getit to work. I think I'll just **uninstall it** and substitute it with other mods like ELFX. I found a [list](https://www.reddit.com/r/skyrimmods/comments/103bcwd/enb_alternative/) of enb alternatives that you might wanna give a look. Note that this list is not exhaustive by any stretch of the imagination.
 
 ## Portal 2
 The Problems:
