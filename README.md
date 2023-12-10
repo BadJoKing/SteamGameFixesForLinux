@@ -51,6 +51,6 @@ The Problem:
 * Didn't Launch:
    * If you're on the **amdvlk** driver:
       * Screw it and switch to radv, maybe install vkd3d via protontricks
-      * If you want to really keep amdvlk just add the launch option ```PROTON_USE_WINED3D=1 %command%```, but prepare for immense performance issues even just hovering your mouse over menu items. I'm not 100% sure if redv is what did it, but it's at least about 90% and that's plenty enough for me to recommend switching.
+      * If you want to really keep amdvlk just add the launch option ```PROTON_USE_WINED3D=1 %command%```, but prepare for immense performance issues even just hovering your mouse over menu items. I'm not 100% sure if radv is what did it, but it's at least about 90% and that's plenty enough for me to recommend switching.
    * If you're on radv:
-      * You might wat to try installing it via lutris.
+      * You might wat to try installing the game via lutris.
