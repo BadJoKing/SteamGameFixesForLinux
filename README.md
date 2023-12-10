@@ -5,19 +5,20 @@ These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon,
 ## Skyrim Special Edition (with AE DLC)
 The Problems:
 * The game would initially not launch at all, the fixes I found for that are:
-    * Don't make your Steam Library on an NTFS-formatted Drive. **Use ext4**.
+    * Don't make your Steam Library on an NTFS-formatted Drive. **Use ext4, btrfs or literally any other non-microsoft file system**.
     * I also didn't find exfat (for compatibility with Windows) to be a viable option since the same "Not-Starting" problem would reappear.
-    * Also, I added the following Launch Options
+    * Also, I added the following Launch Options (note that these expect you to use the radv driver (vulkan-radeon package))
     ```
     WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 mesa_glthread=true %command%
     ```
     * Now, when you do your own research, maybe on [Skyrim SE's protondb](https://www.protondb.com/app/489830), you might find that some people added a ```PROTON_USE_WINED3D=1 %command%``` option to their game. I didn't, because for me it would cause the performance to be abysmal. We're talking 1 FPS **at most** throughout the opening scene, average was more like 5 SPF. Your mileage may vary though, so you might wanna try it out, just to see if it works for you or not.
-    * You might also want to try **deleting the wineprefix** for Skyrim SE (located somewhere around /path/to/steamapps/compatdata/489830/pfx) and relaunching the game. **BEWARE THOUGH,** since this also deletes your save games. So if you didn't save them to steam cloud, enable that or just copy over the folder and copy back the save states after you're done. 
+    * Another thing that I saw recommended was to **<ins>install amdvlk</ins>** and add the following options:```VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/amd_icd64.json" %command%```. However, this again caused my game to just not start at all, so I removed the option. Again, your mileage may vary tho and maybe this information is of some value to you.
+    * You might also want to try **<ins>deleting the wineprefix</ins>** for Skyrim SE (located somewhere around /path/to/steamapps/compatdata/489830/pfx) and relaunching the game. **<ins>BEWARE THOUGH,</ins>** since this also deletes your save games. So if you didn't save them to steam cloud, enable that or just copy over the folder and copy back the save states after you're done. 
 * Skyrim runs now, but there's some very annoying **hitching** happening
     * I'm on Linux Mint 21.2 cinnamon right now and cinnamon has this annoying quirk where it doesn't disable compositing for fullscreen apps by default, so the way to do exactly that was to go to ```System Settings -> General -> Disable compositing on fullscreen applications```.
-* I want to run Skyrim with mods, but **skse64_loader.exe can't launch Skyrim**:
+* I want to run Skyrim with mods, but **<ins>skse64_loader.exe can't launch Skyrim</ins>**:
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
-    * You probably installed MO2 to manage your mods and if that's the case, **uninstall** it along with SKSE64 and then **reinstall MO2 _without_ manually installing SKSE64**. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one. 
+    * You probably installed MO2 to manage your mods and if that's the case, **uninstall** it along with SKSE64 and then **<ins>reinstall MO2 _without_ manually installing SKSE64</ins>**. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one. 
 * Skyrim gets **stuck** at **"Running Install script (Microsoft Visual C++)"**:
     * Clear the download cache.
 * Skyrim starts, but gets **stuck at a black screen**:
