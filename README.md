@@ -61,7 +61,7 @@ The Problem:
 
 ## Generation Zero
 The Problems:
-* Didn't launch:
+* Crashes at launch:
    * Switch to a (GE-)Proton Version 7 or earlier. This will launch the game, but crash when trying to play.
    * Add ```PROTON_USE_WINED3D=1 %command%``` to the launch options. With this you can play on newer versions of proton. I recommend the new 9.0 beta version.
    * UPDATE: Apparently dxvk got an update or something, because it works for me now. It might also be because I installed [reshade](https://github.com/kevinlekiller/reshade-steam-proton)
@@ -69,7 +69,7 @@ The Problems:
    * If you have a cpu with integrated graphics, it's using that instead of the dGPU. Add  ```DRI_PRIME=1 %command%``` to the launch options. You can also go into the settings file at <steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings/<Directory with random numbers for a name>/settings.json and change the DisplayDxAdapter variable to 0.
 * The colors are messed up. Everything is made up of only red, green, yellow or blue and nothing in between:
    > * it's probably due to the pos anti aliasing in the game. You can either install [this mod](https://www.nexusmods.com/generationzero/mods/1) (follow the install instructions on the mod's site, but install reshade from [this repository](https://github.com/kevinlekiller/reshade-steam-proton), because just running the exe through wine won't work) or you can just disable it entirely if you go into the game's wineprefix (<steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings) there should be another folder with a bunch of random numbers in the name. In there should be a settings.json file. Find the variable responsible for AA and set it to 0. In game it'll still show some AA enabled, but that's not true. (credit for these fixes goes to [this steam community thread](https://steamcommunity.com/app/704270/discussions/0/1643164649208311196/)\
-   * **_UPDATE:_** It's probably **not** because of the AA. My new theory is that WINED3D just can't handle the textures/shaders that well for some reason. The Fix I found for that is **[installing Reshade](https://github.com/kevinlekiller/reshade-steam-proton) (Follow the instructions in the README and _read the output_. especially the last few lines that tell you to add launch options/environment variables.)**  
+   * **_UPDATE:_** It's probably **not** because of the AA. My new theory is that WINED3D just can't handle the textures/shaders that well for some reason. The Fix I found for that is **[installing Reshade](https://github.com/kevinlekiller/reshade-steam-proton) (Follow the instructions in the README and _read the output_. especially the last few lines that tell you to add launch options/environment variables.)** and ditching WINED3D. If my other theory about why a similar config didn't work before is correct then ReShade should fix the crashing error that dxvk had.
 > My current config:\
 > The mod from nexusmods. Proton 9.0(beta). ReShade. The following launch options:\
 > ```DRI_PRIME=1 WINEDLLOVERRIDES="d3dcompiler_47=n;dxgi=n,b" mangohud gamemoderun %command%```
