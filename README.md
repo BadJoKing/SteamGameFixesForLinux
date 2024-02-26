@@ -3,6 +3,8 @@ Just some fixes for problems I came across while trying to run Steam games on Li
 These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon, at the moment EndeavourOS), but depending on your distro and general setup your mileage may vary. 
 I should probably also mention that, at the moment, I'm running on an all-AMD system, so I won't have anything regarding Nvidia GPUs recorded here (yet?).
 
+> **<ins>Disclaimer:</ins>** These are all fixes that I'm pretty sure worked for me at least at some point. Some may be outdated and many of the reasons that I list for the issues are pure speculation on my part. Don't treat those parts as a definitive answer for why something doesn't work. Also don't use it as a reason to turn your wrath against a developer.
+
 ## Skyrim Special Edition (with AE DLC)
 The Problems:
 * The game would initially not launch at all, the fixes I found for that are:
@@ -62,10 +64,19 @@ The Problems:
 * Didn't launch:
    * Switch to a (GE-)Proton Version 7 or earlier. This will launch the game, but crash when trying to play.
    * Add ```PROTON_USE_WINED3D=1 %command%``` to the launch options. With this you can play on newer versions of proton. I recommend the new 9.0 beta version.
+   * UPDATE: Apparently dxvk got an update or something, because it works for me now. It might also be because I installed [reshade](https://github.com/kevinlekiller/reshade-steam-proton)
 * The game is slow af:
-   * If you have a cpu with integrated graphics, it's using that instead of the dGPU. Add  ```DRI_PRIME=1 %command%``` to the launch options
-* The colors are messed up:
-   * it's probably due to the pos anti aliasing in the game. You can either install [this mod](https://www.nexusmods.com/generationzero/mods/1) (follow the install instructions on the mod's site) or you can just disable it entirely if you go into the game's wineprefix (<steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings) there should be another folder with a bunch of random numbers in the name. In there should be a settings.json file. Find the variable responsible for AA and set it to 0. In game it'll still show some AA enabled, but that's not true. (credit for these fixes goes to [this steam community thread](https://steamcommunity.com/app/704270/discussions/0/1643164649208311196/)\
-My current config:
-The mod from nexusmods. Proton 9.0(beta). The following launch options:
-```DRI_PRIME=1 PROTON_USE_WINED3D=1 %command%```
+   * If you have a cpu with integrated graphics, it's using that instead of the dGPU. Add  ```DRI_PRIME=1 %command%``` to the launch options. You can also go into the settings file at <steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings/<Directory with random numbers for a name>/settings.json and change the DisplayDxAdapter variable to 0.
+* The colors are messed up. Everything is made up of only red, green, yellow or blue and nothing in between:
+   > * it's probably due to the pos anti aliasing in the game. You can either install [this mod](https://www.nexusmods.com/generationzero/mods/1) (follow the install instructions on the mod's site, but install reshade from [this repository](https://github.com/kevinlekiller/reshade-steam-proton), because just running the exe through wine won't work) or you can just disable it entirely if you go into the game's wineprefix (<steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings) there should be another folder with a bunch of random numbers in the name. In there should be a settings.json file. Find the variable responsible for AA and set it to 0. In game it'll still show some AA enabled, but that's not true. (credit for these fixes goes to [this steam community thread](https://steamcommunity.com/app/704270/discussions/0/1643164649208311196/)\
+   * **_UPDATE:_** It's probably **not** because of the AA. My new theory is that WINED3D just can't handle the textures/shaders that well for some reason. The Fix I found for that is **[installing Reshade](https://github.com/kevinlekiller/reshade-steam-proton) (Follow the instructions in the README and _read the output_. especially the last few lines that tell you to add launch options/environment variables.)**  
+> My current config:\
+> The mod from nexusmods. Proton 9.0(beta). ReShade. The following launch options:\
+> ```DRI_PRIME=1 WINEDLLOVERRIDES="d3dcompiler_47=n;dxgi=n,b" mangohud gamemoderun %command%```
+
+## Valheim
+The Problem:
+* It's only using 4GB of ram:
+   * Let me preface this by saying that I have not been able to validate if this actually works. I just read [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2861463097) that this *generally* works, but it might as well not.
+      * Adding ```-MaxMem=8192``` *should* double the available ram for Valheim
+      * If Valheim is comiled for a 32bit OS though, then 4GB would be the maximum amount it can take at all. However I have little reason to believe this other than the fact that it limits it self to 4GB, because the system requirements list a 64-bit OS as a minimum requirement. I might be wrong tho, so don't take what I wrote here at face value.
