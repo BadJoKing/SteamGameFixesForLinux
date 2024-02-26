@@ -56,3 +56,16 @@ The Problem:
       * If you want to really keep amdvlk just add the launch option ```PROTON_USE_WINED3D=1 %command%```, but prepare for immense performance issues even just hovering your mouse over menu items. I'm not 100% sure if radv is what did it, but it's at least about 90% and that's plenty enough for me to recommend switching.
    * If you're on radv:
       * You might wat to try installing the game via lutris.
+
+## Generation Zero
+The Problems:
+* Didn't launch:
+		* Switch to a (GE-)Proton Version 7 or earlier. This will launch the game, but crash when trying to play.
+		* Add ```PROTON_USE_WINED3D=1 %command%``` to the launch options. With this you can play on newer versions of proton. I recommend the new 9.0 beta version.
+* The game is slow af:
+		* If you have a cpu with integrated graphics, it's using that instead of the dGPU. Add  ```DRI_PRIME=1 %command%``` to the launch options
+* The colors are messed up:
+		* it's probably due to the pos anti aliasing in the game. You can either install [this mod](https://www.nexusmods.com/generationzero/mods/1) (follow the install instructions on the mod's site) or you can just disable it entirely if you go into the game's wineprefix (<steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings) there should be another folder with a bunch of random numbers in the name. In there should be a settings.json file. Find the variable responsible for AA and set it to 0. In game it'll still show some AA enabled, but that's not true. (credit for these fixes goes to [this steam community thread](https://steamcommunity.com/app/704270/discussions/0/1643164649208311196/)\
+My current config:
+The mod from nexusmods. Proton 9.0(beta). The following launch options:
+```DRI_PRIME=1 PROTON_USE_WINED3D=1 %command%```
