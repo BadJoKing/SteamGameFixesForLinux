@@ -31,20 +31,20 @@ The Problems:
 * Skyrim crashes when it tries rendering the world after clicking "New Game" (enbseries installed):
     * You might want to verify your installed files, just to be sure everything's where it's supposed to be.
     * You might have some enbseries files missing or incorrectly installed. Try un-/reinstalling enbseries and try it again.
-* **Wine C++** Runtime "assertion failed" error pop-up on (GE-)proton 8 and newer:
-   * Yeah, that's a problem with enbseries. If you want to keep enbseries and don't really care about the proton version then just **change it to something like GEProton-7-55** or earlier. If you want the newer proton version, I've got bad news for you as I haven't found a way yet to get it to work. I think I'll just **uninstall it** and substitute it with other mods like ELFX. I found a [list](https://www.reddit.com/r/skyrimmods/comments/103bcwd/enb_alternative/) of enb alternatives that you might wanna give a look. Note that this list is not exhaustive by any stretch of the imagination.
+* **Wine C++ Runtime** "assertion failed" error pop-up on (GE-)proton 8 and newer:
+   * Yeah, that's probably a problem with enbseries. If you want to keep enbseries and don't really care about the proton version then just **change it to something like GEProton-7-55** or earlier. If you want the newer proton version, I've got bad news for you as I haven't found a way yet to get it to work. I think I'll just **uninstall it** and substitute it with other mods like ELFX. I found a [list](https://www.reddit.com/r/skyrimmods/comments/103bcwd/enb_alternative/) of enb alternatives that you might wanna give a look. Note that this list is not exhaustive by any stretch of the imagination.
 
 ## Portal 2
 The Problems:
 * The game would start with a wrong aspect ratio and resolution
-    * Add the Launch option ```-vulkan```
+    * Add the Launch option ```-vulkan```. If you have any launch options that require you to append a ```%command%``` to work, place the ```-vulkan``` option **after** that.
 * The game stutters
     * Try [disabling compositing on fullscreen applications](https://linux-gaming.kwindu.eu/index.php?title=Compositor_(X11)#Cinnamon), if you are using Cinnamon as a desktop environment.
 
 ## Satisfactory
 The Problem:
 * It just didn't launch. The fix for that was to add the following launch options: ```LD_BIND_NOW=1 VKD3D_CONFIG=dxr PROTON_ENABLE_NVAPI=1 DXVK_ENABLE_NVAPI=1 %command% -NO_EOS_OVERLAY ‑USEALLAVAILABLECORES -nosplash -nothreadtimeout```
-   * Not sure whether or not all of those are needed. Might want to [muntz](https://en.wikipedia.org/wiki/Muntzing) around a bit, throw launch options at the game and see what sticks. (or in this case rip launch options out of the game)
+   * Not sure whether or not all of those are needed. Might want to [muntz](https://en.wikipedia.org/wiki/Muntzing) around a bit, throw launch options at the game and see what sticks. (or in this case rip launch options out of the game) For example, I'm sure that you don't need VKD3D_CONFIG and DXVK_ENABLE_NVAPI configured simultaneously, since you can only use one at a time, but adding both doesn't seem to hurt, so I'm sticking with that for the time being.
 
 ## Icarus
 The Problem:
@@ -62,9 +62,9 @@ The Problem:
 ## Generation Zero
 The Problems:
 * Crashes at launch:
-   * Switch to a (GE-)Proton Version 7 or earlier. This will launch the game, but crash when trying to play.
+   * Switch to a (GE-)Proton Version 7 or earlier. This will launch the game, but probably crash when trying to play.
    * Add ```PROTON_USE_WINED3D=1 %command%``` to the launch options. With this you can play on newer versions of proton. I recommend the new 9.0 beta version.
-   * UPDATE: Apparently dxvk got an update or something, because it works for me now. It might also be because I installed [reshade](https://github.com/kevinlekiller/reshade-steam-proton)
+   * UPDATE: Apparently dxvk got an update or something, because it works for me now without WINED3D. It might also be because I installed [reshade](https://github.com/kevinlekiller/reshade-steam-proton)
 * The game is slow af:
    * If you have a cpu with integrated graphics, it's using that instead of the dGPU. Add  ```DRI_PRIME=1 %command%``` to the launch options. You can also go into the settings file at <steam library folder>/steamapps/compatdata/704270/pfx/drive_c/users/steamuser/documents/avalanche studios/saves/settings/<Directory with random numbers for a name>/settings.json and change the DisplayDxAdapter variable to 0.
 * The colors are messed up. Everything is made up of only red, green, yellow or blue and nothing in between:
