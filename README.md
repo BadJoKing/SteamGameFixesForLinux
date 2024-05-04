@@ -4,6 +4,41 @@ These may or may not work for you. They did for me (on Linux Mint 21.2 Cinnamon,
 I should probably also mention that, at the moment, I'm running on an all-AMD system, so I won't have anything regarding Nvidia GPUs recorded here (yet?).
 
 > **<ins>Disclaimer:</ins>** These are all fixes that I'm pretty sure worked for me at least at some point. Some may be outdated and many of the reasons that I list for the issues are pure speculation on my part. Don't treat those parts as a definitive answer for why something doesn't work. Also don't use it as a reason to turn your wrath against a developer.
+
+# General Fixes
+## Problem 1: The game does not launch (completely) or it gets stuck while trying
+### Solution 1: Verify Integrity
+Try verifying the integrity of the game files under <code>Properties -> Installed Files -> Verify integrity of Game Files</code>. This can help with corrupted executables/game data or just a broken install due to modding or something like that.
+### Solution 2: Recreate the wineprefix
+You might also want to try <b><ins>deleting the game's wineprefix</ins></b> (located somewhere around [Steam Library Path]/steamapps/compatdata/[game ID]/pfx) and relaunching the game. <b><ins>BEWARE THOUGH</ins></b>, since this also deletes your save games. So if you didn't save them to steam cloud, enable that or just copy over the folder and copy back the save states after you're done. The Game ID can be found in the game's properties under the "Updates" tab.
+## Problem 2: The game stutters/hitches
+### Solution 1:
+Try disabling the compositor before running games. At least on Cinnamon (the DE I'm on currently) you have to manually disable compositing for fullscreen applications in the settings. It's under the "General" tab the first option.
+
+# Skyrim Special Edition (with AE DLC)
+## Problem 1: It doesn't launch
+### Solution 1: Wrong Filesystem
+Don't make your Steam Library on an NTFS-formatted Drive. **Use ext4, btrfs or literally any other non-microsoft file system**. I also didn't find exfat (for compatibility with Windows) to be a viable option since the same "Not-Starting" problem would reappear.
+### Solution 2: Add Launch options
+Add the following launch options (note that these expect you to use the radv driver (vulkan-radeon package)):<br>
+         <code>WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 mesa_glthread=true %command%</code><br><br>
+Now, when you look maybe on <a href="https://www.protondb.com/app/489830">Skyrim SE's protondb</a>, you might find that some people added a <code>PROTON_USE_WINED3D=1 %command%</code> option to their game. I didn't, because for me it would cause the performance to be abysmal. We're talking 1 FPS **at most** throughout the opening scene, average was more like 5 SPF. Your mileage may vary though, so you might wanna try it out, just to see if it works for you or not.
+<br><br>
+Another thing that I saw recommended was to <b><ins>install amdvlk</ins></b> and add the following options:<br>
+         <code>WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/amd_icd64.json" %command%</code>
+## Problem 2: I want to run Skyrim with mods, but <b><ins>skse64_loader.exe can't launch Skyrim</ins></b>
+### Solution 1: Verify just to be sure
+You might want to verify your installed files, just to be sure everything's where it's supposed to be.
+### Solution 2: 
+If you installed MO2 to manage your mods, <b>uninstall</b> it along with SKSE64 and then <b><ins>reinstall MO2 <i>without</i> manually installing SKSE64</ins></b>. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one.
+## Problem 3: Skyrim gets <b>stuck</b> at <b>"Running Install script (Microsoft Visual C++)"</b>
+### Solution 1: Clear the download cache.
+Clear the download cache and start again.
+## Problem 4: Skyrim starts, but gets <b>stuck at a black screen</b>
+### Solution 1: Verify
+Verify the installed files. It may be missing some critical resource/dependency that somehow doesn't throw an error, but instead hangs, or quietly fails while the game waits for an answer.
+### Solution 2: Remove mods/Use MO2
+If you installed mods <b>manually or via Vortex</b>, the game might try and fail to load them either due to missing dependencies, corrupted files or any other error with the mods. You can check whether that's the case by prepending <code>PROTON_LOG=1</code> to the launch options. If it says that it tries loading certain mods(e.g. EngineFixes or MCM as was the case with my game), you'll have to remove all the mods/Vortex created files from the Skyrim root folder. <a href="./FileTree-SSE-AE-detail.txt">This file</a> shows the fil tree of a vanilla Skyrim AE directory. You can use it to check whether you have/have deleted all the necessary files for a normal vanilla run. I would also personally recommend <b><a href=https://github.com/rockerbacon/modorganizer2-linux-installer>switching to MO2</a></b>, because it doesn't clutter the root folder with all the mods, but instead tells Skyrim to look at another folder for mods (or so I remember. I read about that once like a few years ago and I'm too lazy to factcheck that. One fact that I know for sure is that the source directory of Skyrim WILL be way cleaner under MO2).
 <table>
    <tr>
       <td>Game Name</td>
@@ -13,25 +48,10 @@ I should probably also mention that, at the moment, I'm running on an all-AMD sy
    <tr>
       <td rowspan=3>
          General
-      </td>
-      <td rowspan=2>
-         The game does not launch (completely) or it gets stuck while trying
+         
       </td>
       <td>
-         Try verifying the integrity of the game files under Properties -> Installed Files -> Verify integrity of Game Files. This can help with corrupted executables/game data or just a broken install due to modding or something like that.
-      </td>
-   </tr>
-   <tr>
-      <td>
-         You might also want to try <b><ins>deleting the game's wineprefix</ins></b> (located somewhere around [Steam Library Path]/steamapps/compatdata/[game ID]/pfx) and relaunching the game. <b><ins>BEWARE THOUGH</ins></b>, since this also deletes your save games. So if you didn't save them to steam cloud, enable that or just copy over the folder and copy back the save states after you're done. The Game ID can be found in the game's properties under the "Updates" tab.
-      </td>
-   </tr>
-   <tr>
-      <td>
-         The game stutters/hitches
-      </td>
-      <td>
-         Try disabling the compositor before running games. At least on Cinnamon (the DE I'm on at the moment) you have to manually disable compositing for fullscreen applications in the settings. It's under the "General" tab the first option.
+         
       </td>
    </tr>
    <tr>
@@ -39,62 +59,60 @@ I should probably also mention that, at the moment, I'm running on an all-AMD sy
          <b><ins>Skyrim Special Edition (with AE DLC)</ins></b> 
       </td>
       <td rowspan="4"> 
-         It doesn't launch 
+          
       </td>
       <td>
-         Don't make your Steam Library on an NTFS-formatted Drive. **Use ext4, btrfs or literally any other non-microsoft file system**. I also didn't find exfat (for compatibility with Windows) to be a viable option since the same "Not-Starting" problem would reappear.
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Add the following launch options (note that these expect you to use the radv driver (vulkan-radeon package)):<br>
-         <code>WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 mesa_glthread=true %command%</code>
+         
       </td>
    </tr>
    <tr>
       <td>
-         Now, when you look maybe on <a href="https://www.protondb.com/app/489830">Skyrim SE's protondb</a>, you might find that some people added a <code>PROTON_USE_WINED3D=1 %command%</code> option to their game. I didn't, because for me it would cause the performance to be abysmal. We're talking 1 FPS **at most** throughout the opening scene, average was more like 5 SPF. Your mileage may vary though, so you might wanna try it out, just to see if it works for you or not.
+         
       </td>
    </tr>
    <tr>
       <td>
-         Another thing that I saw recommended was to <b><ins>install amdvlk</ins></b> and add the following options:
-         <code>WINEDLLOVERRIDES="xaudio2_7=n,b" PULSE_LATENCY_MSEC=90 VK_ICD_FILENAMES="/usr/share/vulkan/icd.d/amd_icd64.json" %command%</code>
+         
+      </td>
+   </tr>
+   <tr>
+      <td>
+         
       </td>
    </tr>
 
    <tr>
       <td rowspan=2>
-         I want to run Skyrim with mods, but <b><ins>skse64_loader.exe can't launch Skyrim</ins></b>
+         
       </td>
       <td>
-         You might want to verify your installed files, just to be sure everything's where it's supposed to be.
-      </td>
-   </tr>
-   <tr>
-      <td>
-         If you installed MO2 to manage your mods, <b>uninstall</b> it along with SKSE64 and then <b><ins>reinstall MO2 <i>without</i> manually installing SKSE64</ins></b>. It turns out MO2 already installs skse on its own and the MO2-installed version somehow works better than the manually installed one.
+         
       </td>
    </tr>
    <tr>
       <td>
-         Skyrim gets <b>stuck</b> at <b>"Running Install script (Microsoft Visual C++)"</b>
+         
+      </td>
+   </tr>
+   <tr>
+      <td>
+         
       </td>
       <td>
-         Clear the download cache.
+         
       </td>
    </tr>
    <tr>
       <td rowspan=2>
-         Skyrim starts, but gets <b>stuck at a black screen</b>
+         
       </td>
       <td>
-         Verify the installed files. It may be missing some critical resource/dependency that somehow doesn't throw an error, but instead hangs, or quietly fails while the game waits for an answer.
+         
       </td>
    </tr>
    <tr>
       <td>
-         If you installed mods <b>manually or via Vortex</b>, the game might try and fail to load them either due to missing dependencies, corrupted files or any other error with the mods. You can check whether that's the case by prepending <code>PROTON_LOG=1</code> to the launch options. If it says that it tries loading certain mods(e.g. EngineFixes or MCM as was the case with my game), you'll have to remove all the mods/Vortex created files from the Skyrim root folder. <a href="./FileTree-SSE-AE-detail.txt">This file</a> shows the fil tree of a vanilla Skyrim AE directory. You can use it to check whether you have/have deleted all the necessary files for a normal vanilla run. I would also personally recommend <b><a href=https://github.com/rockerbacon/modorganizer2-linux-installer>switching to MO2</a></b>, because it doesn't clutter the root folder with all the mods, but instead tells Skyrim to look at another folder for mods (or so I remember. I read about that once like a few years ago and I'm too lazy to factcheck that. One fact that I know for sure is that the source directory of Skyrim WILL be way cleaner under MO2).
+         
       </td>
    </tr>
    <tr>
@@ -126,12 +144,7 @@ I should probably also mention that, at the moment, I'm running on an all-AMD sy
          And if enb still doesn't work, you can override some winedlls. My current config is a combination of my solution to the first problem and Eljeyna's suggestions:
          <pre>
             <code>
-               WINEDLLOVERRIDES="xaudio2_7=n,b","d3d11 = n,b",\
-               "d3d12 = n,b","dxgi = n,b","d3dcompiler_43 = n,b",\
-               "d3dcompiler_47 = n,b","d3dx11_43 = n,b" PUSE_LATENCY_MSEC=90 \
-               MANGOHUD=1 gamemoderun vk_amdvlk %command%
-   
-               please remember to remove the line breaks before pasting this into your launch options.
+               WINEDLLOVERRIDES="xaudio2_7=n,b","d3d11 = n,b","d3d12 = n,b","dxgi = n,b","d3dcompiler_43 = n,b","d3dcompiler_47 = n,b","d3dx11_43 = n,b" PUSE_LATENCY_MSEC=90 MANGOHUD=1 gamemoderun vk_amdvlk %command% 
             </code>
          </pre>
       </td>
