@@ -131,6 +131,7 @@ If you have a cpu with integrated graphics, it's using that instead of the dGPU.
  >* Let me preface this by saying that I have not been able to validate if this actually works. I just read [here](https://steamcommunity.com/sharedfiles/filedetails/?id=2861463097) that this *generally* works, but it might as well not.
  >     * Adding ```-MaxMem=8192``` *should* double the available ram for Valheim
  >     * If Valheim is comiled for a 32bit OS though, then 4GB would be the maximum amount it can take at all. However I have little reason to believe this other than the fact that it limits it self to 4GB, because the system requirements list a 64-bit OS as a minimum requirement. I might be wrong tho, so don't take what I wrote here at face value.
+
 Turns out that doesn't work... Bummer...
 
 
