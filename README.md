@@ -72,24 +72,44 @@ And if enb still doesn't work, you can override some winedlls. My current config
 ### Solution 4: Ditch enbseries
 It is possible just substituting enbseries with other mods like <a href="https://www.reddit.com/r/skyrimmods/comments/103bcwd/enb_alternative/">these here</a> or you could also just use <a href="https://github.com/kevinlekiller/reshade-steam-proton">ReShade</a>. I haven't tried it though, so it might be possible that the same problem persists with reshade that was encountered with enb.
 
+## Problem 6: I want to install MO2 plugins, but it says that pyQt6 (or any other module for that matter) is missing.
+### Solution 1: Install the modules yourself.
+Download your preferred python version from the [official website](https://www.python.org/downloads/windows/) (has to be the windows version). In my experience, the latest version should suffice.
+Now what you wanna do is open a terminal window in the folder with the .exe file and execute the following command:
+```
+# NOTE: replace /path/to/steamapps with the correct path to the steamapps folder on your system.
+# NOTE_2: also replace python.exe with the correct filename for the .exe file you just downloaded.
+WINEPREFIX=/path/to/steamapps/compatdata/489830/pfx wine python.exe
+```
+Navigate through the installer and install python. Basically the only thing we actually care for is pip.
+Once the installation is complete, execute the following command:
+```
+# NOTE: Again replace /path/to/steamapps with the correct path to the steamapps folder on your system.
+WINEPREFIX=/path/to/steamapps/compatdata/489830/pfx wineconsole
+```
+A new cmd window should open. In there enter the command:
+```
+pip install pyQt6
+# Note: replace pyQt6 with whatever module was missing for the plugin
+```
 
 # Portal 2
 
-Problem 1: The game starts with the wrong aspect ratio/resolution
+## Problem 1: The game starts with the wrong aspect ratio/resolution
 ### Solution 1: Add launch options
 Add the launch option <code>-vulkan</code>. If you have any additional launch options that require you to append a <code>%command%</code> to work, place the <code>-vulkan</code> <b>behind</b> that
 
 
 # Satisfactory
 
-Problem 1: It didn't launch
+## Problem 1: It didn't launch
 ### Solution 1: Add launch options
 Added the launch options <code>LD_BIND_NOW=1 VKD3D_CONFIG=dxr PROTON_ENABLE_NVAPI=1 DXVK_ENABLE_NVAPI=1 %command% -NO_EOS_OVERLAY ‑USEALLAVAILABLECORES -nosplash -nothreadtimeout</code>. Not sure whether or not all of those are needed. Might want to <a href="https://en.wikipedia.org/wiki/Muntzing">muntz</a> around a bit, throw launch options at the game and see what sticks. (or in this case rip launch options out of the game) For example, I'm sure that you don't need VKD3D_CONFIG and DXVK_ENABLE_NVAPI configured simultaneously, since you can only use one at a time, but adding both doesn't seem to hurt, so I'm sticking with that for the time being.
 
 
 # Icarus
 
-Problem 1: Didn't launch
+## Problem 1: Didn't launch
 ### Solution 1: Launch options
 Added the launch options <code>PROTON_ENABLE_NVAPI=1 %command%</code>
 
